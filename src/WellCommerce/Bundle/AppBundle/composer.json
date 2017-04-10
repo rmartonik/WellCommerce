@@ -32,14 +32,17 @@
   },
   "require": {
     "wellcommerce/core-bundle": "^0.9@dev",
-    "wellcommerce/api-bundle": "^0.9@dev"
+    "wellcommerce/api-bundle": "^0.9@dev",
+    "sunhater/kcfinder": "dev-master",
+    "ikadoc/kcfinder-bundle": "^1.1"
   },
   "extra": {
     "branch-alias": {
       "dev-master": "0.9.x-dev"
     },
     "enhancer-traits": {
-      "WellCommerce\\Extra\\AppBundle\\Entity\\ClientExtraTrait": "src/WellCommerce/Extra/AppBundle/Entity/ClientExtraTrait.php"
+      "WellCommerce\\Extra\\AppBundle\\Entity\\ClientExtraTrait": "src/WellCommerce/Extra/AppBundle/Entity/ClientExtraTrait.php",
+      "WellCommerce\\Extra\\AppBundle\\Entity\\ShopExtraTrait": "src/WellCommerce/Extra/AppBundle/Entity/ShopExtraTrait.php"
     }
   }
 }

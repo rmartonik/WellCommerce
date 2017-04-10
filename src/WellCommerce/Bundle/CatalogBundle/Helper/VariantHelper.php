@@ -12,6 +12,7 @@
 
 namespace WellCommerce\Bundle\CatalogBundle\Helper;
 
+use WellCommerce\Bundle\AppBundle\Entity\Media;
 use WellCommerce\Bundle\AppBundle\Helper\CurrencyHelperInterface;
 use WellCommerce\Bundle\CatalogBundle\Entity\Product;
 use WellCommerce\Bundle\CatalogBundle\Entity\Variant;
@@ -92,10 +93,23 @@ class VariantHelper implements VariantHelperInterface
             'finalPriceGross'    => $this->currencyHelper->convertAndFormat($sellPrice->getFinalGrossAmount(), $baseCurrency),
             'sellPriceGross'     => $this->currencyHelper->convertAndFormat($sellPrice->getGrossAmount(), $baseCurrency),
             'discountPriceGross' => $this->currencyHelper->convertAndFormat($sellPrice->getDiscountedGrossAmount(), $baseCurrency),
+            'finalPriceNet'      => $this->currencyHelper->convertAndFormat($sellPrice->getFinalNetAmount(), $baseCurrency),
+            'sellPriceNet'       => $this->currencyHelper->convertAndFormat($sellPrice->getNetAmount(), $baseCurrency),
+            'discountPriceNet'   => $this->currencyHelper->convertAndFormat($sellPrice->getDiscountedNetAmount(), $baseCurrency),
             'stock'              => $variant->getStock(),
             'symbol'             => $variant->getSymbol(),
             'options'            => $this->getVariantOptions($variant),
+            'photo'              => $this->getPhoto($variant->getPhoto()),
         ];
+    }
+    
+    protected function getPhoto(Media $media = null): string
+    {
+        if ($media instanceof Media) {
+            return $media->getPath();
+        }
+        
+        return '';
     }
     
     protected function getVariantOptionsKey(Variant $variant): string
