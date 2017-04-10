@@ -123,6 +123,12 @@ class ProductFormBuilder extends AbstractFormBuilder
             'transformer' => $this->getRepositoryTransformer('entity', $this->get('producer.repository')),
         ]));
         
+        $mainData->addChild($this->getElement('select', [
+            'name'        => 'producer_collection',
+            'label'       => $this->trans('common.label.producer_collection'),
+            'transformer' => $this->getRepositoryTransformer('entity', $this->get('producer_collection.repository')),
+        ]));
+        
         $this->addMetadataFieldset($form, $this->get('product.repository'));
         
         $categoryPane = $form->addChild($this->getElement('nested_fieldset', [
@@ -235,9 +241,9 @@ class ProductFormBuilder extends AbstractFormBuilder
         ]));
         
         $stockData->addChild($this->getElement('text_field', [
-            'name'   => 'stock',
-            'label'  => 'common.label.stock',
-            'rules'  => [
+            'name'  => 'stock',
+            'label' => 'common.label.stock',
+            'rules' => [
                 $this->getRule('required'),
             ],
         ]));
